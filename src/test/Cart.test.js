@@ -8,6 +8,7 @@ describe('Cart', () => {
     const selectedProducts=[]
     const cartWrapper = shallow(<Cart selectedProducts={selectedProducts}/>);
     expect(cartWrapper.find('li')).toHaveLength(0);
+    expect(cartWrapper.find('p').text()).toEqual('Total: 0');
   });
 
   it('should return cart products list', () => {
@@ -18,5 +19,6 @@ describe('Cart', () => {
     ];
     const cartWrapper = shallow(<Cart selectedProducts={selectedProducts}/>);
     expect(cartWrapper.find('li')).toHaveLength(3);
+    expect(cartWrapper.find('p').text()).toEqual('Total: 51.21');
   });
 });

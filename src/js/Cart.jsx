@@ -3,13 +3,14 @@ import React, {Component} from 'react';
 class Cart extends Component {
   static defaultProps = {selectedProducts: []}
   render() {
+    const {selectedProducts} = this.props;
     return (<div>
       <ul>
-        {this.props.selectedProducts.map((product, index) => {
+        {selectedProducts.map((product, index) => {
           return <li key={index}>{product.name}  {product.price}</li>
         })}
       </ul>
-      Total: {}
+      <p>Total: {selectedProducts.reduce((sum, sp) => sum=sum+sp.price,0)}</p>
     </div>);
   }
 }
