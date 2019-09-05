@@ -10,7 +10,7 @@ class Cart extends Component {
           return <li key={index}>{product.name}  {product.price}</li>
         })}
       </ul>
-      <p>Total: {selectedProducts.reduce((sum, sp) => sum=sum+sp.price,0)}</p>
+      <p>Total: {selectedProducts.reduce((sum, sp) => sum=sum+sp.price,0).toFixed(2)}</p>
     </div>);
   }
 }

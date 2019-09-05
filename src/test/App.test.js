@@ -14,14 +14,14 @@ describe('App', () => {
     const appWrapper = mount(<App/>);
     expect(appWrapper.find('h1').text()).toEqual('Shopping Zone');
     expect(appWrapper.find('ProductsList')).toHaveLength(1);
-    expect(appWrapper.find('p').text()).toEqual('Total: 0');
+    expect(appWrapper.find('p').text()).toEqual('Total: 0.00');
   });
 
   it('should return selected products with total amount', () => {
     const appWrapper = mount(<App/>);
     expect(appWrapper.find('h1').text()).toEqual('Shopping Zone');
     expect(appWrapper.find('ProductsList')).toHaveLength(1);
-    expect(appWrapper.find('p').text()).toEqual('Total: 0');
+    expect(appWrapper.find('p').text()).toEqual('Total: 0.00');
 
     const firstItem = appWrapper.find('li').at(0);
     expect(firstItem.text()).toContain('Pears');
@@ -32,7 +32,11 @@ describe('App', () => {
 
     firstItem.find('button').simulate('click');
     expect(appWrapper.find('Cart').find('li')).toHaveLength(2);
-    expect(appWrapper.find('p').text()).toEqual('Total: 21.5');
+    expect(appWrapper.find('p').text()).toEqual('Total: 21.50');
+
+    appWrapper.find('li').at(1).find('button').simulate('click');
+    expect(appWrapper.find('Cart').find('li')).toHaveLength(3);
+    expect(appWrapper.find('p').text()).toEqual('Total: 41.73');
   });
 });
 
