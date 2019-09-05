@@ -5,7 +5,7 @@ class ProductsList extends Component {
   render() {
     return (<ul>
       {this.props.products.map((product,index) => {
-        return <li key={index}>{product.name}  {product.price}</li>
+        return <li key={index}>{product.name}        {product.price}</li>
       })}
     </ul>)
   }
