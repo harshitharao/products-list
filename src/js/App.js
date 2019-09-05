@@ -13,18 +13,23 @@ const products = [
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { selectedProducts: [] }
+    this.state = { products, selectedProducts: [] }
   }
 
   onAdd = (product) => {
     this.setState({ selectedProducts: this.state.selectedProducts.concat(product) })
   };
 
+  filter = (e) => {
+    this.setState({ products: products.filter(p => p.name.includes(e.target.value)) })
+  };
+
   render() {
     return (
       <div className="App">
         <h1>Shopping Zone</h1>
-        <ProductsList products={products} onAdd={this.onAdd}/>
+        <input onChange={(e) => this.filter(e)}></input>
+        <ProductsList products={this.state.products} onAdd={this.onAdd}/>
         <Cart selectedProducts={this.state.selectedProducts}/>
       </div>
     );

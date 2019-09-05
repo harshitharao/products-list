@@ -38,5 +38,26 @@ describe('App', () => {
     expect(appWrapper.find('Cart').find('li')).toHaveLength(3);
     expect(appWrapper.find('p').text()).toEqual('Total: 41.73');
   });
+
+  it('should return filtered products', () => {
+    const appWrapper = mount(<App/>);
+    expect(appWrapper.find('h1').text()).toEqual('Shopping Zone');
+
+    const listWrapper = appWrapper.find('ProductsList');
+    expect(listWrapper.find('li')).toHaveLength(4);
+
+    appWrapper.find('input').simulate('change', {target: {value: 'o'}});
+    expect(appWrapper.find('ProductsList').find('li')).toHaveLength(2);
+
+    expect(appWrapper.find('p').text()).toEqual('Total: 0.00');
+
+    const firstItem = appWrapper.find('li').at(0);
+    expect(firstItem.text()).toContain('Dove');
+
+    appWrapper.find('input').simulate('change', {target: {value: ''}});
+    expect(appWrapper.find('ProductsList').find('li')).toHaveLength(4);
+
+    expect(appWrapper.find('li').at(0).text()).toContain('Pears');
+  });
 });
 
