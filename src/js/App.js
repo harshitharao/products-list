@@ -21,7 +21,7 @@ class App extends Component {
   };
 
   filter = (e) => {
-    this.setState({ products: products.filter(p => p.name.includes(e.target.value)) })
+    this.setState({ products: products.filter(p => p.name.toLocaleLowerCase().includes(e.target.value.toLocaleLowerCase())) })
   };
 
   render() {

@@ -46,7 +46,7 @@ describe('App', () => {
     const listWrapper = appWrapper.find('ProductsList');
     expect(listWrapper.find('li')).toHaveLength(4);
 
-    appWrapper.find('input').simulate('change', {target: {value: 'o'}});
+    appWrapper.find('input').simulate('change', {target: {value: 'O'}});
     expect(appWrapper.find('ProductsList').find('li')).toHaveLength(2);
 
     expect(appWrapper.find('p').text()).toEqual('Total: 0.00');
